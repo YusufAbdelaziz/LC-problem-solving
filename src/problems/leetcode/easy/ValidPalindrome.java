@@ -2,6 +2,9 @@ package src.problems.leetcode.easy;
 
 public class ValidPalindrome {
   public boolean isPalindrome(String s) {
+    if (s == null)
+      throw new IllegalArgumentException("The string is null");
+
     int l = 0;
     int r = s.length() - 1;
     while (l < r) {
