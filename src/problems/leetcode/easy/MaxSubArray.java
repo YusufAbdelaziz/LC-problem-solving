@@ -1,4 +1,4 @@
-package src.problems.leetcode.easy;
+package problems.leetcode.easy;
 
 public class MaxSubArray {
   // Kadane's algorithm.

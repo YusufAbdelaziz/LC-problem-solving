@@ -1,4 +1,4 @@
-package src.problems.leetcode.easy;
+package problems.leetcode.easy;
 
 // 121
 public class BestTimeToBuyAndSellStock {
