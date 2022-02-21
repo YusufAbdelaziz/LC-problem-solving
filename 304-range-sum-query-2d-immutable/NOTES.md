@@ -1,6 +1,5 @@
-[![1](https://drive.google.com/uc?id=1jzdcHzeEdBnxRfe7dZ89PpTZyPiO_0FU)](https://drive.google.com/uc?id=1jzdcHzeEdBnxRfe7dZ89PpTZyPiO_0FU)
-[![2](https://drive.google.com/uc?id=11-SLk_OjA9KLEda41T7yZ-okLzMYdBbg)](https://drive.google.com/uc?id=11-SLk_OjA9KLEda41T7yZ-okLzMYdBbg)
-[![3](https://drive.google.com/uc?id=1tH0bHvrbrWM3iLOuvG7mSVpULkt0RvM-)](https://drive.google.com/uc?id=1tH0bHvrbrWM3iLOuvG7mSVpULkt0RvM-)
-[![4](https://drive.google.com/uc?id=1bDP4sDFkfwONlnZoBkHMqTLRSomVjjEo)](https://drive.google.com/uc?id=1bDP4sDFkfwONlnZoBkHMqTLRSomVjjEo)
-
+[![1](https://i.imgur.com/OntxbdZ.jpg)](https://i.imgur.com/OntxbdZ.jpg)
+[![2](https://i.imgur.com/J90WtPT.jpg)](https://i.imgur.com/J90WtPT.jpg)
+[![3](https://i.imgur.com/HY1m8TR.jpg)](https://i.imgur.com/HY1m8TR.jpg)
+[![4](https://i.imgur.com/0oTkeSw.jpg)](https://i.imgur.com/0oTkeSw.jpg)
 
