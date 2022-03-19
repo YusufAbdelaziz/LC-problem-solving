@@ -1,8 +1,8 @@
 class Solution {
     private void dfs(int node, int[][] isConnected, boolean [] visited){
-       visited[node - 1] = true; 
-       for(int i = 1; i <= isConnected[node - 1].length ; i++){
-           if(isConnected[node - 1][i - 1] == 1 && !visited[i - 1]){
+       visited[node] = true; 
+       for(int i = 0; i < isConnected[node].length ; i++){
+           if(isConnected[node][i] == 1 && !visited[i]){
                dfs(i, isConnected, visited);
            }
        }
@@ -12,8 +12,8 @@ class Solution {
         boolean visited[] = new boolean[isConnected[0].length];
         int provincesNum = 0;
         
-        for(int i = 1; i <= isConnected[0].length ; i++){
-            if(!visited[i - 1]){
+        for(int i = 0; i < isConnected[0].length ; i++){
+            if(!visited[i]){
                 provincesNum++;
                 dfs(i, isConnected, visited);
             }
