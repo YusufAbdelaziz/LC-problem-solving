@@ -1,8 +1,6 @@
 class Solution {
     private void dfs(int node, int[][] isConnected, boolean [] visited){
        visited[node - 1] = true; 
-        // i = 2.
-        //
        for(int i = 1; i <= isConnected[node - 1].length ; i++){
            if(isConnected[node - 1][i - 1] == 1 && !visited[i - 1]){
                dfs(i, isConnected, visited);
