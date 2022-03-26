@@ -34,3 +34,7 @@ To take course 1 you should have finished course 0, and to take course 0 you sho
 	<li>All the pairs prerequisites[i] are <strong>unique</strong>.</li>
 </ul>
 </div>
+
+<h2>Study Resource</h2>
+<a href="https://www.youtube.com/watch?v=EgI5nU9etnU">Course Schedule - Graph Adjacency List - Leetcode 207
+</a>
