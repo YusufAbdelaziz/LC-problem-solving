@@ -1,8 +1,3 @@
-enum NodeState {
-    VISITING,
-    UNVISITED,
-    VISITED
-}
 class Solution {
     
     
