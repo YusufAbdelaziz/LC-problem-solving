@@ -1,7 +1,5 @@
 # PS in Java
 
-- Solving some problem on LeetCode.
+Solving problems on LeetCode.
 
-| Easy | Medium | Hard |
-| ---- | ------ | ---- |
-| 14   | 2      | 0    |
+https://leetcode.com/yusufabdelaziz/
