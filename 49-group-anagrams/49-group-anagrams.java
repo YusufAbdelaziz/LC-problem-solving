@@ -2,15 +2,9 @@ class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for(String str : strs){
-            // eat
-            // tea
             var sortedStr = sortString(str);
-            // sortedStr -> aet
-            // sortedStr -> aet
             var list = map.getOrDefault(sortedStr, new ArrayList<String>());
-            // [eat]
             list.add(str);
-            // (aet -> [eat, tea])
             map.put(sortedStr, list);
         }
         
