@@ -14,13 +14,7 @@ class Solution {
             map.put(sortedStr, list);
         }
         
-        List<List<String>> sol = new ArrayList<>();
-        
-        for(List<String> val : map.values()){
-            sol.add(val);
-        }
-        
-        return sol;
+        return new ArrayList<List<String>>(map.values());
         
     }
     
