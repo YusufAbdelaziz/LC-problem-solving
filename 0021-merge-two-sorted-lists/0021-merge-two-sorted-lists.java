@@ -13,38 +13,34 @@ class Solution {
       if(list1 == null && list2 == null) return null;
       if(list1 == null && list2 != null) return list2;
       if(list2 == null && list1 != null) return list1;
-    ListNode mergedList = new ListNode();
-    ListNode newList = mergedList;
+    /// Result head is the first element in the LL.
+    /// Result tail is the node that is moving to add more elements.
+    ListNode resultHead = null, resultTail = null;
 
-    while (list1 != null && list2 != null) {
-      if (list1.val < list2.val) {
-        mergedList.val = list1.val;
-        if (list1.next != null) {
-          mergedList.next = new ListNode();
+    while(list1 != null | list2 != null) {
+        ListNode smallestNode = null;
+        /// If list 2 is empty or list 1 is not empty and list 1's current val
+        /// is bigger than list 2's current val, then we assign list 1's val as
+        /// the smallest node.
+        if(list2 == null || (list1 != null && list1.val < list2.val)){
+            smallestNode = list1;
+            list1 = list1.next;
+        } else {
+            smallestNode = list2;
+            list2 = list2.next;
         }
-        list1 = list1.next;
-      } else {
-        mergedList.val = list2.val;
-        if (list2.next != null) {
-          mergedList.next = new ListNode();
+        /// First condition is only triggered once.
+        if(resultHead == null){
+            resultHead = smallestNode;
+        } else {
+            /// We're chaning the null value assigned from the previous loop.
+            resultTail.next = smallestNode;
         }
-        list2 = list2.next;
-      }
-      if (mergedList.next != null) {
-        mergedList = mergedList.next;
-      }
+        
+        resultTail = smallestNode;
+        resultTail.next = null;
     }
-    while (list2 != null) {
-      mergedList.next = new ListNode(list2.val);
-      // mergedList.val = ;
-      mergedList = mergedList.next;
-      list2 = list2.next;
-    }
-    while (list1 != null) {
-      mergedList.next = new ListNode(list1.val);
-      mergedList = mergedList.next;
-      list1 = list1.next;
-    }
-    return newList;
+      
+      return resultHead;
   }
 }
