@@ -89,7 +89,14 @@ public class Trie {
   private void collectHelper(String s, List<String> result, Node n) {
     if (n.isKey)
       result.add(s);
-    if(result.size() > 0) return;
+    /// These two lines are necessary so the implementation can pass LeetCode's
+    /// tests.
+    /// As mentioned above current implementation returns all possible keys with a
+    /// specific prefix
+    /// which is not efficient at all when we want to check if a prefix has at least
+    /// a single valid key.
+    if (result.size() > 0)
+    return;
     for (Character c : n.children.keySet()) {
       collectHelper(s + c, result, n.children.get(c));
     }
