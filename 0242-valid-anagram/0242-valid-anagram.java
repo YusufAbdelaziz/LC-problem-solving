@@ -27,6 +27,13 @@ class Solution {
 //         return true;
     
 //     }
+        // Taking another look at the constraints, the strings consist of lowercase English letters.
+        // So we can have an array of 26 slots (number of English letters) and store the occurrences
+        // of each character in the first string by subtracting it from 'a' (ascii value 97).
+        // So that the letter 'a' slot is 0 and 'b' is 1 and so forth.
+        
+        // Time -> O(N) where N = s.length() + t.length().
+        // Space -> O(1)
         int[] charOccurrences = new int[26];
         
         for(char c : s.toCharArray()) {
