@@ -18,7 +18,7 @@ class Solution {
 
         }
         
-        // Check if each character has been added twice.
+        // Check if each character has removed.
         
         for(int occurrence : map.values()){
             if(occurrence != 0) return false;
