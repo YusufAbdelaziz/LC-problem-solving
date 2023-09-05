@@ -1,5 +1,5 @@
 class Solution {
-     public int[] topKFrequent(int[] nums, int k) {
+   public int[] topKFrequent(int[] nums, int k) {
       if (nums.length == 0 || nums == null || nums.length == 1)
         return nums;
       // Time -> O(K log n) where K is the number of pops we make for the max heap.
@@ -24,6 +24,9 @@ class Solution {
 
       // return result.stream().mapToInt(Integer::intValue).toArray();
 
+      // Solving using bucket sort.
+      // Time -> O(N)
+      // Space -> O(N)
       HashMap<Integer, Integer> map = new HashMap<>();
       int[] result = new int[k];
       for (int num : nums) {
