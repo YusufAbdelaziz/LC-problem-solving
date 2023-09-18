@@ -24,7 +24,7 @@ class Solution {
     }
     
     private int makeOperation(String token, int firstOp, int secondOp) {
-        Operation op = Operation.ADD;
+        Operation op = null;
         switch(token) {
             case "/": 
                 op = Operation.DIV;
