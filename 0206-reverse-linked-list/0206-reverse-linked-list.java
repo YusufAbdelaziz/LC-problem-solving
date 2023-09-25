@@ -10,18 +10,14 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-    if (head == null)
-      return null;
+        ListNode prev = null;
+        while(head != null) {
+           ListNode next = head.next;
+           head.next = prev;
+           prev = head;
+           head = next;
+        }
         
-    ListNode prev = null;
-    /// Two pointers problem.
-    while(head != null){
-        ListNode nextNode = head.next;
-        head.next = prev;
-        prev = head;
-        head = nextNode;
+        return prev;
     }
-    return prev;
-  }
-
 }
