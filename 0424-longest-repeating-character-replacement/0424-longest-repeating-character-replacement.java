@@ -21,7 +21,6 @@ class Solution {
                 window.put(leftChar, window.get(leftChar) - 1);
                 left++;
                 // maxCharEntry = window.entrySet().stream().max(Map.Entry.comparingByValue()).orElse(null);
-                maxFreq = Math.max(maxFreq, window.get(leftChar));
             }
 
             maxLen = Math.max(maxLen, (right - left + 1));
