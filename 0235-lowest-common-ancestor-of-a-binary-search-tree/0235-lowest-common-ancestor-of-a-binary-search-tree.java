@@ -11,12 +11,25 @@
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         
-        if(p.val > root.val && q.val > root.val) {
-            return lowestCommonAncestor(root.right, p, q);
-        } else if(p.val < root.val && q.val < root.val){
-            return lowestCommonAncestor(root.left, p, q);
-        } else {
-            return root;
+//         if(p.val > root.val && q.val > root.val) {
+//             return lowestCommonAncestor(root.right, p, q);
+//         } else if(p.val < root.val && q.val < root.val){
+//             return lowestCommonAncestor(root.left, p, q);
+//         } else {
+//             return root;
+//         }
+        
+        var current = root;
+        while(current != null) {
+            if(p.val > current.val && q.val > current.val) {
+                 current = current.right;
+            } else if(p.val < current.val && q.val < current.val) {
+                 current = current.left;
+            } else {
+                return current;
+            }
+            
         }
+        return current;
     }
 }
