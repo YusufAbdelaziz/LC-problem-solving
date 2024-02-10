@@ -22,7 +22,7 @@ class Solution {
             if(l2 != null) sum += l2.val;
             sum += carry;
             
-            carry = sum / 10;
+            carry = (int) Math.floor(sum / 10); // Or just sum/10 since Java divison floors the result.
             sentinel.next = new ListNode(sum % 10);
             sentinel = sentinel.next;
             
