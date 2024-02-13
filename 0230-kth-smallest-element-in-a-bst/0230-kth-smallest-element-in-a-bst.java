@@ -14,30 +14,51 @@
  * }
  */
 class Solution {
-     private int count = 0;
-     private int result = 0;
+    // Recursive in-order approach
+//      private int count = 0;
+//      private int result = 0;
     
-     public int kthSmallest(TreeNode root, int k) {
-        count = 0; // Reset count for each call
-        inorderTraversal(root, k);
-        return result;
-     }
+//      public int kthSmallest(TreeNode root, int k) {
+//         count = 0; // Reset count for each call
+//         inorderTraversal(root, k);
+//         return result;
+//      }
     
-     private void inorderTraversal(TreeNode node, int k) {
-        if (node == null || count >= k)
-            return;
+//      private void inorderTraversal(TreeNode node, int k) {
+//         if (node == null || count >= k)
+//             return;
         
-        // Traverse left subtree
-        inorderTraversal(node.left, k);
+//         // Traverse left subtree
+//         inorderTraversal(node.left, k);
         
-        // Process current node
-        count++;
-        if (count == k) {
-            result = node.val;
-            return;
-        }
+//         // Process current node
+//         count++;
+//         if (count == k) {
+//             result = node.val;
+//             return;
+//         }
         
-        // Traverse right subtree
-        inorderTraversal(node.right, k);
+//         // Traverse right subtree
+//         inorderTraversal(node.right, k);
+//     }
+    // Recursive in-order traversal.
+    public int kthSmallest(TreeNode root, int k) {
+         int count = 0;
+         TreeNode p = root;
+         Stack<TreeNode> stack = new Stack<>();
+        
+         while(!stack.empty() || p != null) {
+             if(p != null) {
+                 stack.push(p);
+                 p = p.left;
+             } else {
+                 TreeNode node = stack.pop();
+                 count++;
+                 if(count == k) return node.val;
+                 p = node.right;
+             }
+         }
+        return Integer.MIN_VALUE;
     }
+    
 }
