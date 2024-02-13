@@ -32,6 +32,6 @@ class Solution {
     private void addNodeToPQ(PriorityQueue<Integer> pq, TreeNode node, int k) {
         pq.offer(node.val);
         
-        if(pq.size() > k) pq.poll();
+        while(pq.size() > k) pq.poll();
     }
 }
