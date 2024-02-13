@@ -15,23 +15,19 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        inOrderTraversal(maxHeap, root, k);
-        return maxHeap.poll();
+        List<Integer> list = new ArrayList<>();
+        inOrderTraversal(list, root);
+        return list.get(k - 1);
     }
     
-    private void inOrderTraversal(PriorityQueue<Integer> pq, TreeNode root, int k) {
+    private void inOrderTraversal(List<Integer> list, TreeNode root) {
         if(root == null) return;
         
-        inOrderTraversal(pq, root.left, k);
-        addNodeToPQ(pq, root, k);
-        inOrderTraversal(pq, root.right, k);
+        inOrderTraversal(list, root.left);
+        list.add(root.val);
+        inOrderTraversal(list, root.right);
 
     }
     
-    private void addNodeToPQ(PriorityQueue<Integer> pq, TreeNode node, int k) {
-        pq.offer(node.val);
-        
-        while(pq.size() > k) pq.poll();
-    }
+  
 }
