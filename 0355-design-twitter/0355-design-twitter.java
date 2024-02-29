@@ -80,10 +80,7 @@ class Twitter {
         if(res.size() == 10) return res;
         res.add(pq.poll().id);
     }
-//     for (int i = 0; i < pq.size() || i < 10; i++) {
-//       if (pq.peek() != null)
-        
-//     }
+      
     return res;
   }
 
