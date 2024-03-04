@@ -8,7 +8,7 @@ class Solution {
         
         while(l <= r) {
             if (nums[l] <= nums[r]) {
-                return nums[l];
+                return Math.min(minElement, nums[l]);
             }
 
             int mid = l + ((r - l) >>> 1);
