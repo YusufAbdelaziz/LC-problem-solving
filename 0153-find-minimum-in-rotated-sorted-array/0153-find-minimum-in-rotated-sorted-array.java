@@ -18,7 +18,10 @@ class Solution {
                 l = mid + 1;
             }
             
-            else { 
+            else {
+                // In case the right half is sorted, then pick the smallest element, which is the
+                // middle one and then conquer the left half.
+                min = Math.min(min, nums[mid]);
                 r = mid - 1;
             }
             
