@@ -50,14 +50,17 @@ class Solution {
             pSentinel = pSentinel.next;
         }
         
-        if(pFirst != null) {
+        while (pFirst != null) {
             pSentinel.next = pFirst;
+            pFirst = pFirst.next;
+            pSentinel = pSentinel.next;
         }
-        
-        if(pSecond != null) {
+
+        while (pSecond != null) {
             pSentinel.next = pSecond;
+            pSecond = pSecond.next;
+            pSentinel = pSentinel.next;
         }
-        
         return sentinel.next;
     }
 }
