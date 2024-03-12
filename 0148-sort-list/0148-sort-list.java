@@ -10,24 +10,54 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        LinkedList<Integer> list = new LinkedList<>();
-        
-        ListNode cur = head;
-        
-        while(cur != null) {
-            list.add(cur.val);
-            cur = cur.next;
+        if(head == null || head.next == null) return head; // Base case for empty or single node list
+        return mergeSort(head);
+    }
+    
+    private ListNode mergeSort(ListNode head) {
+        if(head.next == null) {
+            return head;
         }
         
-        Collections.sort(list);
+        ListNode fast = head, slow = head, prev = null;
         
-        ListNode updater = head;
-        
-        while(updater != null) {
-            updater.val = list.removeFirst();
-            updater = updater.next;
+        while(fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
         }
         
-        return head;
+        prev.next = null; // to cut the connection between two partitions.
+        
+        ListNode leftPartition = mergeSort(head);
+        ListNode rightPartition = mergeSort(slow);
+        
+        return merge(leftPartition, rightPartition);
+    }
+    
+    private ListNode merge(ListNode firstPartition, ListNode secondPartition) {
+        ListNode sentinel = new ListNode();
+        ListNode pFirst = firstPartition, pSecond = secondPartition, pSentinel = sentinel;
+        
+        while(pFirst != null && pSecond != null) {
+            if(pFirst.val < pSecond.val) {
+                pSentinel.next = pFirst;
+                pFirst = pFirst.next;
+            } else {
+                pSentinel.next = pSecond;
+                pSecond = pSecond.next; 
+            }
+            pSentinel = pSentinel.next;
+        }
+        
+        if(pFirst != null) {
+            pSentinel.next = pFirst;
+        }
+        
+        if(pSecond != null) {
+            pSentinel.next = pSecond;
+        }
+        
+        return sentinel.next;
     }
 }
