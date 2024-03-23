@@ -7,20 +7,35 @@ class Solution {
         return result;
     }
     
-    private void backtrack(int[] candidates, int target, int start, LinkedList<Integer> track) {
-        int sum = track.stream().mapToInt(Integer::intValue).sum();
-        if(sum == target) {
-            result.add(new LinkedList<>(track));
-            return;
-        }
-        else if(sum > target) return;
+    private void backtrack(int[] candidates, int target, int index, LinkedList<Integer> track) {
+//         int sum = track.stream().mapToInt(Integer::intValue).sum();
+//         if(sum == target) {
+//             result.add(new LinkedList<>(track));
+//             return;
+//         }
+//         else if(sum > target) return;
         
-        for(int i = start; i < candidates.length; i++) {
-            track.add(candidates[i]);
+//         for(int i = index; i < candidates.length; i++) {
+//             track.add(candidates[i]);
             
-            backtrack(candidates, target, sum < target ? i : i + 1, track);
+//             backtrack(candidates, target, sum < target ? i : i + 1, track);
             
-            track.removeLast();
+//             track.removeLast();
+//         }
+        
+        if(target == 0) {
+            result.add(new LinkedList<>(track));
+        } else if(target < 0 || index >= candidates.length) {
+            return;
+        } else {
+           track.add(candidates[index]); 
+           
+           backtrack(candidates, target - candidates[index], index, track);
+            
+           track.removeLast();
+            
+           backtrack(candidates, target, index + 1, track);
+
         }
     }
 }
