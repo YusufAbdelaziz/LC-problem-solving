@@ -1,23 +1,23 @@
 class Solution {
-    private List<List<Integer>> result = new LinkedList<>();
-    
     public List<List<Integer>> subsets(int[] nums) {
         LinkedList<Integer> track = new LinkedList<>();
-        
-        backtrack(nums, 0, track);
-        
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(nums, 0, track, result);
         return result;
     }
     
     
-    private void backtrack(int[] nums, int start, LinkedList<Integer> track) {
-        result.add(new LinkedList<>(track));
-        for(int i = start; i < nums.length; i++) {
+    public void backtrack(int[] nums, int index, LinkedList<Integer> track, List<List<Integer>> result) {
+        if(!result.contains(track)) {
+            result.add(new ArrayList<>(track));
+        }
+        
+        for(int i = index; i < nums.length; i++) {
             track.add(nums[i]);
             
-            backtrack(nums, i + 1, track);
+            backtrack(nums, i + 1, track, result);
             
             track.removeLast();
         }
-    } 
+    }
 }
