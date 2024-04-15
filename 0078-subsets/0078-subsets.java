@@ -7,10 +7,8 @@ class Solution {
     }
     
     
-    public void backtrack(int[] nums, int index, LinkedList<Integer> track, List<List<Integer>> result) {
-        if(!result.contains(track)) {
-            result.add(new LinkedList<>(track));
-        }
+    public void backtrack(int[] nums, int index, LinkedList<Integer> track, List<List<Integer>> result) {  
+        result.add(new LinkedList<>(track)); 
         
         for(int i = index; i < nums.length; i++) {
             track.add(nums[i]);
