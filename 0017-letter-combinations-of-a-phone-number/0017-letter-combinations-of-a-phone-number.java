@@ -17,14 +17,15 @@ class Solution {
         if(digits.length() == 0) return new LinkedList<>();
         List<String> result = new LinkedList<>();
         String combination = "";
-        backtrack(result, combination, 0, digits);
+        StringBuilder sb = new StringBuilder();
+        backtrack(result, sb, 0, digits);
         return result;
         
     }
     
-    private void backtrack(List<String> result, String combination, int start, String digits) {
-        if(combination.length() == digits.length()) {
-            result.add(combination);
+    private void backtrack(List<String> result, StringBuilder sb, int start, String digits) {
+        if(sb.length() == digits.length()) {
+            result.add(sb.toString());
             return;
         } else if(start >= digits.length()) {
             return;
@@ -32,7 +33,9 @@ class Solution {
         
         String chars = map.get(digits.charAt(start));
         for(char c : chars.toCharArray()) {
-            backtrack(result, combination + c, start + 1, digits);
+            sb.append(c);
+            backtrack(result, sb, start + 1, digits);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 }
