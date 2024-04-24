@@ -58,6 +58,7 @@ class Solution {
             curCopy.next = copyNode;
             curCopy = copyNode;
             
+            // Restore original list.
             cur.next = originalNext;
             cur = cur.next;
         }
