@@ -15,32 +15,53 @@ class Node {
 
 class Solution {
     public Node copyRandomList(Node head) {
-        if(head == null) return null;
+        if(head == null ) return null;
+        
+        // Step 1 -> Create a copy node after each node.
         
         Node cur = head;
-        Node newHead = new Node(0);
         
-        Node curNewHead = newHead;
-        
-        // Maps old node to a new node
-        HashMap<Node, Node> map = new HashMap<>();
         while(cur != null) {
-            curNewHead.val = cur.val;
-            map.put(cur, curNewHead);
-            if(cur.next != null) curNewHead.next = new Node(0);
-            curNewHead = curNewHead.next;
-            cur = cur.next;
+            Node next = cur.next;
+            Node copyNode = new Node(cur.val);
+            cur.next = copyNode;
+            copyNode.next = next;
+            
+            cur = next;
         }
+        
+        // Step 2 -> Iterate over the list to modify the random pointer to a newly copied node.
         
         cur = head;
         
         while(cur != null) {
-            Node curNewNode = map.get(cur);
-            curNewNode.random = map.get(cur.random);
+            Node originalRandom = cur.random;
+            Node copyNode = cur.next;
             
+            if(originalRandom != null) copyNode.random = originalRandom.next;
+            
+            cur = cur.next.next;
+        }
+        
+        
+        // Step 3 -> Separate the copied nodes from the original ones.
+        
+        Node sentinel = new Node(-1);
+        Node curCopy = sentinel;
+        cur = head;
+        
+        while(cur != null) {
+            Node originalNext = cur.next.next;
+            
+            // Extract copy from original nodes.
+            Node copyNode = cur.next;
+            curCopy.next = copyNode;
+            curCopy = copyNode;
+            
+            cur.next = originalNext;
             cur = cur.next;
         }
         
-        return newHead;
+        return sentinel.next;
     }
 }
