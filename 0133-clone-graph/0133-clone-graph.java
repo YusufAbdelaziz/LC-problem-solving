@@ -19,52 +19,29 @@ class Node {
 */
 
 class Solution {
+    private HashMap<Integer, Node> map = new HashMap<>();
+    
     public Node cloneGraph(Node node) {
-        if(node == null) return node;
-        else if(node.neighbors.isEmpty()) return new Node(node.val);
-        
-        HashMap<Integer, Set<Integer>> map = new HashMap<>();
-        boolean[] visited = new boolean[101];
-        
-        // Construct the map.
-        dfs(node, visited, map);
-        
-        HashMap<Integer, Node> copyMap = new HashMap<>();
-        
-        // Create copy nodes.
-        for(int nodeVal : map.keySet()) {           
-              copyMap.put(nodeVal, new Node(nodeVal));      
-        }
-        
-        // Create connections.
-        for(int nodeVal : map.keySet()) {
-              Node copiedNode = copyMap.get(nodeVal);
-              Set<Integer> neighbors = map.get(nodeVal);
-                
-              for(int neighbor : neighbors) {
-                  Node neighborNode = copyMap.get(neighbor);
-                  copiedNode.neighbors.add(neighborNode);
-              }
-        }
-            
-        return copyMap.get(node.val);
-        
+        return clone(node);
     }
     
     
-    private void dfs(Node node, boolean[] visited, HashMap<Integer, Set<Integer>> map) {
-        Set<Integer> neighbors = map.getOrDefault(node.val, new HashSet<>());
-        if(neighbors.isEmpty()) {
-            map.put(node.val, neighbors);
-        }
-        visited[node.val] = true;
+    private Node clone(Node node) {
+        
+        // Handles empty node case.
+        if(node == null)
+            return null;
+        
+        if(map.containsKey(node.val))
+            return map.get(node.val);
+        
+        Node newNode = new Node(node.val);
+        map.put(node.val, newNode);
         
         for(Node neighbor : node.neighbors) {
-            neighbors.add(neighbor.val);
-            if(!visited[neighbor.val]) {
-                dfs(neighbor, visited, map);
-            }
+            newNode.neighbors.add(clone(neighbor));
         }
         
+        return newNode;
     }
 }
