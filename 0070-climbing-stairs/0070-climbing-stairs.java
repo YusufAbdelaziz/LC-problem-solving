@@ -1,13 +1,15 @@
 class Solution {
     public int climbStairs(int n) {
-        /// These two variables represent the last two possible steps.
-        int one = 1, two = 0;
-        for(int i = n - 1 ; i >= 0; i --){
-            int temp = one;
-            one += two;
-            two = temp;
+        if(n == 1) return 1;
+        
+        int[] dp = new int[n + 1];
+        
+        dp[1] = 1;
+        dp[2] = 2; 
+        for(int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
         
-        return one;
+        return dp[n];
     }
 }
