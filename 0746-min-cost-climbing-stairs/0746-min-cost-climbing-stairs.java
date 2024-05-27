@@ -23,11 +23,25 @@ class Solution {
         
 //         return Math.min(dp[0], dp[1]);
         
+        // Same as first one but in reverse if you start from the floor.
+        // int n = cost.length;
+        // for(int i = n - 3; i >= 0; i--) {
+        //      cost[i] += Math.min(cost[i + 1], cost[i + 2]);
+        // }
+        // return Math.min(cost[0], cost[1]);
+        
         int n = cost.length;
-        for(int i = n - 3; i >= 0; i--) {
-             cost[i] += Math.min(cost[i + 1], cost[i + 2]);
+        
+        int s1 = 0;
+        int s2 = cost[n - 1];
+        
+        for(int i = n - 2; i >= 0; i--) {
+            int temp = s2;
+            s2 = cost[i] + Math.min(s2, s1);
+            s1 = temp;
         }
-        return Math.min(cost[0], cost[1]);
+        
+        return Math.min(s1, s2);
     }
     
 }
