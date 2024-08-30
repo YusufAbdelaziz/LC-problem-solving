@@ -17,7 +17,7 @@ class Solution {
         }
         return dp[amount] == amount + 1 ? -1 : dp[amount];
 
-        // Time Complexity -> O(amount * coins)
+        // Time Complexity -> O(amount * coins.length)
         // Space Complexity -> O(amount)
     }
 }
