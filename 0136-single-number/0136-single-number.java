@@ -1,11 +1,10 @@
 class Solution {
     public int singleNumber(int[] nums) {
-       HashSet<Integer> occurrences = new HashSet<>();
+       int sum = 0;
        for(int num : nums) {
-           if(!occurrences.contains(num)) occurrences.add(num);
-           else occurrences.remove(num);
+           sum ^= num;
        }
         
-       return occurrences.stream().findFirst().get();
+       return sum;
     }
 }
