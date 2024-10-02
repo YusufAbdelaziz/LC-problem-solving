@@ -1,5 +1,6 @@
 class Solution {
     public int numSubarrayProductLessThanK(int[] nums, int k) {
+        if(k <= 0) return 0;
         int count = 0;
         int n = nums.length;
         int windowProduct = 1;
