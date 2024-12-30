@@ -21,6 +21,9 @@ class Solution {
                 return false;
             }
         }
+        // Basically means this is a good node such that traversal from it
+        // won't lead to any cycles, hence we can visit it more than once but we don't need
+        // to visit its neighbors again (that's why we removed its neighbors)
         visited[node] = false;
         graph.put(node, new ArrayList<>());
         return true;
