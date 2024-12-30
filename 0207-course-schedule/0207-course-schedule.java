@@ -1,50 +1,42 @@
 class Solution {
-    private enum NodeState {
-        VISITIED,
-        UNVISITED,
-        VISITING
-    }
-    
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        
-        
-        List<List<Integer>> graph = new ArrayList<>();
-        for(int i = 0 ; i < numCourses ; i ++){
-            graph.add(new ArrayList<>());
-        }
-        
-        for(int[] prereq : prerequisites) {
-            graph.get(prereq[1]).add(prereq[0]);
-        }
-        
-        NodeState[] state = new NodeState[numCourses];
-        for(int i = 0 ; i < numCourses ; i ++ ){
-            state[i] = NodeState.UNVISITED;
-        }
-        
-        for(int i = 0 ; i < numCourses; i++){
-            if(state[i] == NodeState.UNVISITED) {
-                if(dfs(i, graph, state)) return false;
+        var graph = constructGraph(numCourses, prerequisites);
+        boolean[] visited = new boolean[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            if (!dfs(i, graph, visited)) {
+                return false;
             }
         }
-        
         return true;
-        
     }
-    private boolean dfs(int node, List<List<Integer>> graph, NodeState[] state){
-        state[node] = NodeState.VISITING;
-        boolean hasCycle = false;
-        
-        for(int neighbour : graph.get(node)){
-            if(state[neighbour] == NodeState.UNVISITED) {
-                hasCycle |= dfs(neighbour, graph, state);
-            } else if(state[neighbour] == NodeState.VISITING){
-                hasCycle = true;
+
+    private boolean dfs(int node, Map<Integer, List<Integer>> graph, boolean[] visited) {
+        if (visited[node])
+            return false;
+        visited[node] = true;
+        List<Integer> neighbors = graph.get(node);
+        for (int neighbor : neighbors) {
+
+            if (!dfs(neighbor, graph, visited)) {
+                return false;
             }
-            
         }
-        state[node] = NodeState.VISITIED;
-        
-        return hasCycle;
+        visited[node] = false;
+        graph.put(node, new ArrayList<>());
+        return true;
+    }
+
+    private Map<Integer, List<Integer>> constructGraph(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        for (int i = 0; i < numCourses; i++) {
+            graph.put(i, new ArrayList<>());
+        }
+
+        for (int[] prerequisite : prerequisites) {
+            List<Integer> edges = graph.get(prerequisite[1]);
+            edges.add(prerequisite[0]);
+        }
+
+        return graph;
     }
 }
