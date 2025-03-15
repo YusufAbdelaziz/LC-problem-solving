@@ -1,106 +1,79 @@
-public class Trie {
-  private final Node root;
+class Trie {
 
-  private class Node {
-    private boolean isKey;
-    private final HashMap<Character, Node> children = new HashMap<>();
+    class Node {
+        private Character c;
+        private Node[] children;
+        private boolean inserted;
 
-    public Node(boolean isKey) {
-      this.isKey = isKey;
+        public Node(Character c) {
+            children = new Node[26];
+            inserted = false;
+            this.c = c;
+        }
+
+        public Node[] getChildren() {
+            return children;
+        }
+
+        public void setInserted(boolean inserted) {
+            this.inserted = inserted;
+        }
+
+        public Boolean getInserted() {
+            return inserted;
+        }
+
+        public Character getChar() {
+            return c;
+        }
+
+        public void setChar(char c) {
+            this.c = c;
+        }
     }
 
-    public void setKey(boolean isKey) {
-      this.isKey = isKey;
+    private Node root;
+
+    public Trie() {
+        root = new Node(null);
     }
 
-  }
+    public void insert(String word) {
+        Node p = root;
+        for (char c : word.toCharArray()) {
+            Node curNode = p.children[c - 'a'];
+            if (curNode == null) {
+                p.children[c - 'a'] = new Node(c);
+            }
+            p = p.children[c - 'a'];
+        }
 
-  public Trie() {
-    root = new Node(false);
-  }
-
-  public void insert(String word) {
-    var currentNode = root;
-    for (int i = 0; i < word.length(); i++) {
-      if (currentNode.children.containsKey(word.charAt(i))) {
-        if (i == word.length() - 1)
-          currentNode.children.get(word.charAt(i)).setKey(true);
-        currentNode = currentNode.children.get(word.charAt(i));
-      } else {
-        currentNode.children.put(word.charAt(i), i == word.length() - 1 ? new Node(true) : new Node(false));
-        currentNode = currentNode.children.get(word.charAt(i));
-      }
-    }
-  }
-
-  public boolean search(String word) {
-    var currentNode = root;
-    for (int i = 0; i < word.length(); i++) {
-      if (currentNode.children.containsKey(word.charAt(i))) {
-        currentNode = currentNode.children.get(word.charAt(i));
-      } else {
-        return false;
-      }
+        p.setInserted(true);
     }
 
-    return currentNode.isKey;
-  }
+    public boolean search(String word) {
+        Node p = root;
+        for (Character c : word.toCharArray()) {
+            Node curNode = p.children[c - 'a'];
+            if (curNode == null || curNode.getChar() != c)
+                return false;
+            p = curNode;
+        }
 
-  public boolean startsWith(String prefix) {
-    var list = keysWithPrefix(prefix);
-
-    return list != null && keysWithPrefix(prefix).size() != 0;
-  }
-
-  /**
-   * Retrieves all keys starting with a prefix.
-   * 
-   * Note that this seem redundant for startWith method as you only need to check
-   * if at least one key exists but I made it for the sake of a complete
-   * implementation.
-   * 
-   * @param prefix
-   * @return list of all keys starting with a given prefix.
-   * 
-   */
-  private List<String> keysWithPrefix(String prefix) {
-    Node lastCharNode = findPrefixNode(prefix);
-    if (lastCharNode == null)
-      return null;
-    List<String> results = new ArrayList<>();
-    for (Character c : root.children.keySet()) {
-      collectHelper(c.toString(), results, root.children.get(c));
+        return p.getInserted();
     }
 
-    return results;
-  }
+    public boolean startsWith(String prefix) {
+        Node p = root;
+        for (Character c : prefix.toCharArray()) {
+            Node curNode = p.children[c - 'a'];
+            if (curNode == null || curNode.getChar() != c)
+                return false;
+            p = curNode;
+        }
 
-  private Node findPrefixNode(String prefix) {
-    var currentNode = root;
-    for (int i = 0; i < prefix.length(); i++) {
-      if (currentNode.children.containsKey(prefix.charAt(i))) {
-        currentNode = currentNode.children.get(prefix.charAt(i));
-      } else
-        return null;
+        return true;
     }
-    return currentNode;
-  }
-
-  private void collectHelper(String s, List<String> result, Node n) {
-    if (n.isKey)
-      result.add(s);
-    /// These two lines are necessary so the implementation can pass LeetCode's
-    /// tests.
-    /// As mentioned above current implementation returns all possible keys with a
-    /// specific prefix
-    /// which is not efficient at all when we want to check if a prefix has at least
-    /// a single valid key.
-    if (result.size() > 0)
-    return;
-    for (Character c : n.children.keySet()) {
-      collectHelper(s + c, result, n.children.get(c));
-    }
-  }
 }
 
 /**
