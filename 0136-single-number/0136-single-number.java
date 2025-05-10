@@ -1,10 +1,11 @@
 class Solution {
     public int singleNumber(int[] nums) {
-       int sum = 0;
-       for(int num : nums) {
-           sum ^= num;
-       }
-        
-       return sum;
+        int num = 0;
+
+        for(int number : nums) {
+            num ^= number;
+        }
+
+        return num;
     }
 }
