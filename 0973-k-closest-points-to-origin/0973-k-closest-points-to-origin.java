@@ -12,10 +12,14 @@ class Solution {
     }
 
     public int[][] kClosest(int[][] points, int k) {
-        PriorityQueue<Pair<Double, Integer[]>> pq = new PriorityQueue<>((a, b) -> Double.compare(a.k, b.k));
+        PriorityQueue<Pair<Double, Integer[]>> pq = new PriorityQueue<>((a, b) -> Double.compare(b.k, a.k));
 
         for (int[] point : points) {
             pq.add(new Pair<Double, Integer[]>(calcEuclideanDistance(point[0], point[1]), new Integer[]{point[0], point[1]}));
+
+            if(pq.size() > k) {
+                pq.poll();
+            }
         }
 
         int[][] sol = new int[k][2];
