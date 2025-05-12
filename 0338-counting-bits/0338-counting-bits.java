@@ -1,23 +1,18 @@
 class Solution {
     public int[] countBits(int n) {
-        int[] res = new int[n + 1];
+        int[] dp = new int[n + 1];
 
-        for(int i = 0; i <= n; i++) {
-            res[i] = numOfSetBits(i);
+        int offset = 1;
+
+        for(int i = 1; i <= n; i++) {
+            if(offset * 2 == i) {
+                offset *= 2;
+            }
+
+            dp[i] = 1 + dp[i - offset];
+
         }
 
-        return res;
-    }
-
-
-    private int numOfSetBits(int n) {
-        int count = 0;
-
-        while(n != 0) {
-            n &= (n - 1);
-            count++;
-        }
-
-        return count;
+        return dp;
     }
 }
