@@ -8,22 +8,22 @@ class Solution {
 
         int[] post = new int[n];
 
-        pre[0] = nums[0];
-        post[n - 1] = nums[n - 1];
-        for(int i = 1; i < n; i++) {
-            pre[i] = pre[i - 1] * nums[i];
+        pre[0] = 1;
+        post[n - 1] = 1;
+
+        for (int i = 1; i < n; i++) {
+            pre[i] = pre[i - 1] * nums[i - 1];
         }
 
-        for(int i = n - 2; i > 0; i--) {
-            post[i] = post[i + 1] * nums[i];
+        for (int i = n - 2; i >= 0; i--) {
+            post[i] = post[i + 1] * nums[i + 1];
+
         }
 
-        res[0] = post[1];
-        res[n - 1] = pre[n - 2];
-        for(int i = 1; i < n - 1; i++) {
-            res[i] = post[i + 1] * pre[i - 1]; 
+        for (int i = 0; i < n; i++) {
+            res[i] = pre[i] * post[i];
         }
 
         return res;
     }
-} 
+}
