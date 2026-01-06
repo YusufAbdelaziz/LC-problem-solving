@@ -15,27 +15,19 @@
  */
 class Solution {
     public boolean isBalanced(TreeNode root) {
-        int[] result = subtreeBalanceCheck(root);
-        
-        return result[0] == 1;
+        return dfs(root)[0] == 1;
     }
-    
-    // Returns two elements where the first is whether a subtree is balanced and the second 
-    // is the height of the subtree.
-    private int[] subtreeBalanceCheck(TreeNode node) {
-        // The base case is when the node is null, return true (1) and 0 for height.
+
+    private int[] dfs(TreeNode node) {
         if(node == null) return new int[]{1, 0};
-        
-        int[] left = subtreeBalanceCheck(node.left);
-        int[] right = subtreeBalanceCheck(node.right);
-        
-        // If any of the left or right subtrees is not balanced, then return 0 as false.
-        if(left[0] == 0 || right[0] == 0) return new int[]{0, 0};
-        
-        int isBalanced = Math.abs(left[1] - right[1]) <= 1 ? 1 : 0;
-        
-        return new int[]{isBalanced, Math.max(left[1], right[1]) + 1};
+
+
+        int[] left = dfs(node.left);
+        int[] right = dfs(node.right);
+
+        boolean balanced = (left[0] == 1 && right[0] == 1) && (Math.abs(right[1] - left[1]) <= 1);
+
+        return new int[]{balanced ? 1 : 0, 1 + Math.max(right[1], left[1])};
+
     }
-    
-   
 }
