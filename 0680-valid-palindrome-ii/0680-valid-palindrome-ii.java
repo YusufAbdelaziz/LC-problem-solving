@@ -4,8 +4,6 @@ class Solution {
 
         int i = 0, j = len - 1;
 
-        boolean characterDeleted = false;
-
         while (i <= j) {
             char currentI = s.charAt(i);
             char currentJ = s.charAt(j);
