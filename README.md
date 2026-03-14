@@ -8,6 +8,7 @@ This repository contains my solutions to LeetCode problems.
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0026-remove-duplicates-from-sorted-array/) | Easy |
+| [0035-search-insert-position](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0035-search-insert-position/) | Easy |
 | [0705-design-hashset](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0705-design-hashset/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
@@ -29,4 +30,8 @@ This repository contains my solutions to LeetCode problems.
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0026-remove-duplicates-from-sorted-array/) | Easy |
+## Binary Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0035-search-insert-position](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0035-search-insert-position/) | Easy |
 <!---LeetCode Topics End-->
