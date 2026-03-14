@@ -5,7 +5,7 @@ class Solution {
 
         while (l <= h) {
 
-            int mid = (l + h) >>> 1;
+            int mid = l + ((h - l) >>> 1);
 
             if (nums[mid] == target)
                 return mid;
