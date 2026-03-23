@@ -30,6 +30,7 @@ This repository contains my solutions to LeetCode problems.
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0026-remove-duplicates-from-sorted-array/) | Easy |
+| [1768-merge-strings-alternately](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/1768-merge-strings-alternately/) | Easy |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -59,4 +60,8 @@ This repository contains my solutions to LeetCode problems.
 | ------- | ------- |
 | [0094-binary-tree-inorder-traversal](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0094-binary-tree-inorder-traversal/) | Easy |
 | [0145-binary-tree-postorder-traversal](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/0145-binary-tree-postorder-traversal/) | Easy |
+## String
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1768-merge-strings-alternately](https://github.com/YusufAbdelaziz/LC-problem-solving/tree/main/1768-merge-strings-alternately/) | Easy |
 <!---LeetCode Topics End-->
